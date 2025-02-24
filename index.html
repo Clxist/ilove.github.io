@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Duaa, Do You Love Me?</title>
+    <style>
+        body {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            background-color: #ffe4e1;
+            font-family: Arial, sans-serif;
+            text-align: center;
+        }
+        h1 {
+            color: #d81b60;
+            font-size: 2rem;
+        }
+        button {
+            margin: 10px;
+            padding: 10px 20px;
+            font-size: 1.2rem;
+            border: none;
+            border-radius: 10px;
+            cursor: pointer;
+            transition: 0.3s;
+        }
+        #yes {
+            background-color: #4CAF50;
+            color: white;
+        }
+        #no {
+            background-color: #f44336;
+            color: white;
+            position: absolute;
+        }
+    </style>
+</head>
+<body>
+    <h1>Duaa, do you love me? ❤️</h1>
+    <button id="yes" onclick="yesAnswer()">Yes</button>
+    <button id="no" onmouseover="moveNoButton()">No</button>
+
+    <script>
+        function yesAnswer() {
+            alert('I love you too! ❤️');
+        }
+
+        function moveNoButton() {
+            let button = document.getElementById('no');
+            let x = Math.random() * (window.innerWidth - 100);
+            let y = Math.random() * (window.innerHeight - 50);
+            button.style.left = x + 'px';
+            button.style.top = y + 'px';
+        }
+    </script>
+</body>
+</html>
