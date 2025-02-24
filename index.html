@@ -5,20 +5,33 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Duaa, Do You Love Me?</title>
     <style>
+        /* Centering content in the middle of the viewport */
         body {
             display: flex;
             flex-direction: column;
             justify-content: center;
             align-items: center;
-            height: 100vh;
-            background-color: #ffe4e1;
-            font-family: Arial, sans-serif;
+            height: 100vh; /* Full viewport height */
+            background-color: #ffe4e1; /* Light pink background */
+            font-family: 'Comic Sans MS', cursive, sans-serif;
             text-align: center;
+            margin: 0; /* Remove default margin */
+            overflow: hidden; /* Prevent scrolling when button moves */
         }
+        /* Styling for the heading */
         h1 {
-            color: #d81b60;
-            font-size: 2rem;
+            color: #d81b60; /* Dark pink color */
+            font-size: 2.5rem;
         }
+        /* Adding a cute GIF */
+        .gif-container {
+            margin-bottom: 20px;
+        }
+        .gif-container img {
+            width: 200px;
+            border-radius: 10px;
+        }
+        /* Styling for the buttons */
         button {
             margin: 10px;
             padding: 10px 20px;
@@ -26,33 +39,47 @@
             border: none;
             border-radius: 10px;
             cursor: pointer;
-            transition: 0.3s;
+            transition: 0.3s; /* Smooth transition effect */
         }
+        /* Styling for the 'Yes' button */
         #yes {
-            background-color: #4CAF50;
+            background-color: #4CAF50; /* Green color */
             color: white;
         }
+        /* Styling for the 'No' button, initially positioned absolutely */
         #no {
-            background-color: #f44336;
+            background-color: #f44336; /* Red color */
             color: white;
-            position: absolute;
+            position: absolute; /* Allows movement on hover */
         }
     </style>
 </head>
 <body>
+    <!-- Cute GIF above the question -->
+    <div class="gif-container">
+        <img src="https://media.giphy.com/media/jUwpNzg9IcyrK/giphy.gif" alt="Cute Love GIF">
+    </div>
+    
+    <!-- Main question text -->
     <h1>Duaa, do you love me? ❤️</h1>
+    
+    <!-- Yes button with onclick event to show an alert -->
     <button id="yes" onclick="yesAnswer()">Yes</button>
+    
+    <!-- No button moves away when hovered over -->
     <button id="no" onmouseover="moveNoButton()">No</button>
 
     <script>
+        /* Function to display an alert when 'Yes' is clicked */
         function yesAnswer() {
             alert('I love you too! ❤️');
         }
 
+        /* Function to move the 'No' button to a random position when hovered over */
         function moveNoButton() {
             let button = document.getElementById('no');
-            let x = Math.random() * (window.innerWidth - 100);
-            let y = Math.random() * (window.innerHeight - 50);
+            let x = Math.random() * (window.innerWidth - 100); /* Ensure button stays within width */
+            let y = Math.random() * (window.innerHeight - 50); /* Ensure button stays within height */
             button.style.left = x + 'px';
             button.style.top = y + 'px';
         }
