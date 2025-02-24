@@ -5,7 +5,6 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Duaa, Do You Love Me?</title>
     <style>
-        /* Animation for vibrating effect on hover */
         @keyframes vibrate {
             0% { transform: translate(0, 0); }
             25% { transform: translate(-2px, 2px); }
@@ -13,7 +12,7 @@
             75% { transform: translate(-2px, -2px); }
             100% { transform: translate(2px, 2px); }
         }
-        /* Animation for screen shaking effect */
+        
         @keyframes screenShake {
             0% { transform: translate(0, 0); }
             25% { transform: translate(-10px, 10px); }
@@ -21,7 +20,7 @@
             75% { transform: translate(-10px, -10px); }
             100% { transform: translate(10px, 10px); }
         }
-        /* Basic styles for layout */
+        
         body {
             display: flex;
             flex-direction: column;
@@ -36,19 +35,23 @@
             position: relative;
             transition: transform 0.2s;
         }
+        
         h1 {
             color: #ff4081;
             font-size: 2.8rem;
             text-shadow: 2px 2px 8px rgba(255, 64, 129, 0.5);
         }
+        
         .gif-container {
             margin-bottom: 20px;
         }
+        
         .gif-container img {
             width: 220px;
             border-radius: 15px;
             box-shadow: 0px 0px 10px rgba(255, 64, 129, 0.4);
         }
+        
         button {
             margin: 10px;
             padding: 12px 24px;
@@ -59,34 +62,39 @@
             transition: all 0.3s ease-in-out;
             position: relative;
         }
+        
         #yes {
             background-color: #ff80ab;
             color: white;
             box-shadow: 0px 4px 10px rgba(255, 128, 171, 0.6);
             position: relative;
         }
+        
         #yes:hover {
             background-color: #ff4081;
             transform: scale(1.1);
             animation: vibrate 0.2s infinite;
         }
+        
         #no {
             background-color: #ff5252;
             color: white;
             position: absolute;
             box-shadow: 0px 4px 10px rgba(255, 82, 82, 0.6);
         }
-        /* Styles for heart particles */
+        
+        /* Styles for red dot particles */
         .particle {
             position: absolute;
-            width: 30px;
-            height: 30px;
-            background-image: url('https://upload.wikimedia.org/wikipedia/commons/4/4f/Heart_symbol_red.svg');
-            background-size: cover;
+            width: 10px;
+            height: 10px;
+            background-color: red;
+            border-radius: 50%;
             opacity: 0.8;
             pointer-events: none;
             animation: floatUp 2s linear;
         }
+        
         @keyframes floatUp {
             from {
                 transform: translateY(0) scale(1);
@@ -106,6 +114,7 @@
     <h1>Duaa, do you love me? ✨❤️</h1>
     <button id="yes" onclick="yesAnswer()" onmouseover="startParticles()" onmouseleave="stopParticles()">Yes</button>
     <button id="no" onmouseover="moveNoButton()">No</button>
+    
     <script>
         let particleInterval;
         
