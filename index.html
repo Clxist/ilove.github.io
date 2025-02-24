@@ -99,7 +99,7 @@
     <div class="gif-container">
         <img src="https://i.pinimg.com/originals/25/7c/cb/257ccbf5ccf0b5acf684252638c624d5.gif" alt="Cute Love GIF">
     </div>
-    <h1>Duaa, do you love me? 💕</h1>
+    <h1>Duaa, do you love me? ✨❤️</h1>
     <button id="yes" onclick="yesAnswer()" onmouseover="startParticles()" onmouseleave="stopParticles()">Yes</button>
     <button id="no" onmouseover="moveNoButton()">No</button>
     <script>
@@ -107,8 +107,8 @@
         
         function yesAnswer() {
             document.body.style.animation = "screenShake 0.5s infinite";
-            for (let i = 0; i < 50; i++) {
-                setTimeout(createParticles, i * 100);
+            for (let i = 0; i < 100; i++) {
+                setTimeout(createParticles, i * 50);
             }
             setTimeout(() => {
                 document.body.style.animation = "";
@@ -124,7 +124,7 @@
         }
         
         function startParticles() {
-            particleInterval = setInterval(createParticles, 150);
+            particleInterval = setInterval(createParticles, 100);
         }
         
         function stopParticles() {
