@@ -67,21 +67,21 @@
         }
         .particle {
             position: absolute;
-            width: 8px;
-            height: 8px;
-            background-color: #ff4081;
-            border-radius: 50%;
+            width: 20px;
+            height: 20px;
+            background-image: url('https://upload.wikimedia.org/wikipedia/commons/4/4f/Heart_symbol_red.svg');
+            background-size: cover;
             opacity: 0.7;
             pointer-events: none;
-            animation: floatUp 1s linear infinite;
+            animation: floatUp 1.5s linear infinite;
         }
         @keyframes floatUp {
             from {
-                transform: translateY(0);
+                transform: translateY(0) scale(1);
                 opacity: 1;
             }
             to {
-                transform: translateY(-50px);
+                transform: translateY(-80px) scale(0.5);
                 opacity: 0;
             }
         }
@@ -92,12 +92,15 @@
         <img src="https://i.pinimg.com/originals/25/7c/cb/257ccbf5ccf0b5acf684252638c624d5.gif" alt="Cute Love GIF">
     </div>
     <h1>Duaa, do you love me? 💕</h1>
-    <button id="yes" onclick="yesAnswer()" onmouseover="createParticles(event)">Yes</button>
+    <button id="yes" onclick="yesAnswer()" onmouseover="startParticles()" onmouseleave="stopParticles()">Yes</button>
     <button id="no" onmouseover="moveNoButton()">No</button>
     <script>
+        let particleInterval;
+        
         function yesAnswer() {
             alert('I love you too! 💖');
         }
+        
         function moveNoButton() {
             let button = document.getElementById('no');
             let x = Math.random() * (window.innerWidth - 100);
@@ -105,20 +108,33 @@
             button.style.left = x + 'px';
             button.style.top = y + 'px';
         }
-        function createParticles(event) {
-            for (let i = 0; i < 10; i++) {
+        
+        function startParticles() {
+            particleInterval = setInterval(() => {
+                createParticles();
+            }, 150);
+        }
+        
+        function stopParticles() {
+            clearInterval(particleInterval);
+        }
+        
+        function createParticles() {
+            let button = document.getElementById('yes');
+            let rect = button.getBoundingClientRect();
+            for (let i = 0; i < 5; i++) {
                 let particle = document.createElement('div');
                 particle.classList.add('particle');
                 document.body.appendChild(particle);
                 
-                let x = event.clientX + (Math.random() * 30 - 15);
-                let y = event.clientY + (Math.random() * 30 - 15);
+                let x = rect.left + rect.width / 2 + (Math.random() * 40 - 20);
+                let y = rect.top;
                 particle.style.left = `${x}px`;
                 particle.style.top = `${y}px`;
                 
                 setTimeout(() => {
                     particle.remove();
-                }, 1000);
+                }, 1500);
             }
         }
     </script>
