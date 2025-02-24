@@ -12,6 +12,13 @@
             75% { transform: translate(-2px, -2px); }
             100% { transform: translate(2px, 2px); }
         }
+        @keyframes screenShake {
+            0% { transform: translate(0, 0); }
+            25% { transform: translate(-10px, 10px); }
+            50% { transform: translate(10px, -10px); }
+            75% { transform: translate(-10px, -10px); }
+            100% { transform: translate(10px, 10px); }
+        }
         body {
             display: flex;
             flex-direction: column;
@@ -24,6 +31,7 @@
             margin: 0;
             overflow: hidden;
             position: relative;
+            transition: transform 0.2s;
         }
         h1 {
             color: #ff4081;
@@ -67,13 +75,13 @@
         }
         .particle {
             position: absolute;
-            width: 20px;
-            height: 20px;
+            width: 30px;
+            height: 30px;
             background-image: url('https://upload.wikimedia.org/wikipedia/commons/4/4f/Heart_symbol_red.svg');
             background-size: cover;
-            opacity: 0.7;
+            opacity: 0.8;
             pointer-events: none;
-            animation: floatUp 1.5s linear infinite;
+            animation: floatUp 2s linear;
         }
         @keyframes floatUp {
             from {
@@ -81,7 +89,7 @@
                 opacity: 1;
             }
             to {
-                transform: translateY(-80px) scale(0.5);
+                transform: translateY(-120px) scale(0.5);
                 opacity: 0;
             }
         }
@@ -98,7 +106,13 @@
         let particleInterval;
         
         function yesAnswer() {
-            alert('I love you too! 💖');
+            document.body.style.animation = "screenShake 0.5s infinite";
+            for (let i = 0; i < 50; i++) {
+                setTimeout(createParticles, i * 100);
+            }
+            setTimeout(() => {
+                document.body.style.animation = "";
+            }, 2000);
         }
         
         function moveNoButton() {
@@ -110,9 +124,7 @@
         }
         
         function startParticles() {
-            particleInterval = setInterval(() => {
-                createParticles();
-            }, 150);
+            particleInterval = setInterval(createParticles, 150);
         }
         
         function stopParticles() {
@@ -122,20 +134,18 @@
         function createParticles() {
             let button = document.getElementById('yes');
             let rect = button.getBoundingClientRect();
-            for (let i = 0; i < 5; i++) {
-                let particle = document.createElement('div');
-                particle.classList.add('particle');
-                document.body.appendChild(particle);
-                
-                let x = rect.left + rect.width / 2 + (Math.random() * 40 - 20);
-                let y = rect.top;
-                particle.style.left = `${x}px`;
-                particle.style.top = `${y}px`;
-                
-                setTimeout(() => {
-                    particle.remove();
-                }, 1500);
-            }
+            let particle = document.createElement('div');
+            particle.classList.add('particle');
+            document.body.appendChild(particle);
+            
+            let x = rect.left + rect.width / 2 + (Math.random() * 40 - 20);
+            let y = rect.top;
+            particle.style.left = `${x}px`;
+            particle.style.top = `${y}px`;
+            
+            setTimeout(() => {
+                particle.remove();
+            }, 2000);
         }
     </script>
 </body>
